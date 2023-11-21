@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link
+		href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@700&family=Dela+Gothic+One&family=DotGothic16&family=Mochiy+Pop+One&family=Mochiy+Pop+P+One&family=Noto+Sans+JP:wght@800&family=Zen+Maru+Gothic:wght@300;700&display=swap"
+		rel="stylesheet">
+</head>
+
+<body>
+	<div class="row">
+		<div class="col-4">左ブロック</div>
+		<div class="col-4">
+			<h1 style="font-family: 'DotGothic16', sans-serif;">サンプル用ページだよ</h1>
+			<h1 style="font-family: 'DotGothic16', sans-serif;">google font使ってるよ</h1>
+
+			<!--ここ大事！！！---->
+			<form th:action="@{/example}" method="POST">
+				<div class="form-group">
+					<label for="example1">入力欄1</label>
+					<input type="text" name="example1"><br>
+
+					<label for="example2">入力欄2</label>
+					<input type="text" name="example2"><br>
+
+					<button type="submit" class="btn btn-primary">送信</button>
+					</div>
+			</form>
+			<!---->
+		</div>
+		<div class="col-4">
+			右ブロック<br>
+			入力欄1の入力内容<p th:text="${example1}"></p>
+			入力欄2の入力内容<p th:text="${example2}"></p>
+		</div>
+	</div>
+</body>
+
+</html>
