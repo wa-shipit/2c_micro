@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	
+	<style>
+		body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden; /* ページからのスクロールを無効にするため */
+        }
+
+        .row {
+            display: flex;
+            height: 100vh; /* ビューポートの高さいっぱいにする */
+        }
+		 .today, .page {
+            flex: 1; 
+            height: 100%;
+            overflow: auto; 
+        }
+	</style>
+</head>
+
+<body>
+	<div class="row">
+			
+
+			<div class="today">
+
+			
+			
+<div th:each="result : ${selectResult}">
+    <h1 th:text="${result.month} + '月' + ${result.day} + '日の予定'"></h1>
+    <p th:text="${result.todo}"></p>
+  
+</div>
+
+
+		<hr>
+	</th>
+		</div>
+		
+		<div class="page">
+			<br>
+			<button onclick="location.href='http://localhost:8080/micadd'">新規登録</button>
+		<button onclick="location.href='http://localhost:8080/micedit'">編集</button>
+		<button onclick="location.href='http://localhost:8080/micdel'">削除</button>
+		</div>
+	</div>
+</body>
+
+</html>
