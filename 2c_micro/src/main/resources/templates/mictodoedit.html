@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>編集画面</title>
+</head>
+<body>
+    <h1>編集画面</h1>
+    <form action="/submit" method="post">
+		<p>編集する日</p>
+        <label for="month">月:</label><br>
+        <input type="number" id="month" name="month" min="1" max="12"><br>
+        <label for="day">日:</label><br>
+        <input type="number" id="day" name="day" min="1" max="31"><br>
+        <p>編集内容</p>
+        <label for="plan">予定:</label><br>
+        <textarea id="plan" name="plan"></textarea><br>
+        <input type="submit" value="編集">
+    </form>
+    <button class="michome" onclick="location.href='michome'">戻る</button>
+</body>
+</html>
