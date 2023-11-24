@@ -36,7 +36,7 @@ public class MicLoginController {
                 "SELECT * FROM users WHERE username = ? AND password = ?", micloginid, micpw);
 
         if (!resultList.isEmpty()) {
-            // ログイン成功
+            // ログイン成功//
             return "michome";
         } else {
             // ログイン失敗
