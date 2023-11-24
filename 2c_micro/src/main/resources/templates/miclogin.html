@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MicLogin</title>
+</head>
+<body>
+
+    <form id="loginForm" onsubmit="submitForm(event)">
+        <label for="micloginid">ID:</label>
+        <input type="text" id="micloginid" name="micloginid" maxlength="16" required>
+        <br>
+        <label for="micpw">Password:</label>
+        <input type="password" id="micpw" name="micpw" maxlength="16" required>
+        <br>
+        <button type="submit">Login</button>
+    </form>
+
+    <div id="message"></div>
+
+    <script>
+        function submitForm(event) {
+            event.preventDefault();
+
+            // Get values from input fields
+            var id = document.getElementById('micloginid').value;
+            var pw = document.getElementById('micpw').value;
+
+            // Check if input length is within limits
+            if (id.length > 16 || pw.length > 16) {
+                showMessage("文字数が多すぎます");
+                return;
+            }
+
+            // Simulate server-side authentication (replace with actual server-side logic)
+            // In a real application, you would make an AJAX request to the server for authentication.
+            var isAuthenticated = authenticateUser(id, pw);
+
+            if (isAuthenticated) {
+                // Redirect to /michome on successful login
+                window.location.href = '/michome';
+            } else {
+                // Display login failure message
+                showMessage("ログインに失敗しました");
+            }
+        }
+
+        function showMessage(message) {
+            document.getElementById('message').innerHTML = message;
+        }
+
+        // Simulated server-side authentication function (replace with actual server-side logic)
+        function authenticateUser(id, pw) {
+            // In a real application, you would perform a server-side authentication check here.
+            // This is a simple example that always returns true.
+            return true;
+        }
+    </script>
+
+</body>
+</html>
