@@ -1,5 +1,8 @@
 package com.example.demo.controller;
 
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
@@ -14,21 +17,32 @@ public class MicLoginController {
 	JdbcTemplate jdbcTemplate;
 
 	//コピペ用サンプル(ページ表示用メソッド)
-	@RequestMapping(path = "/example", method = RequestMethod.GET)
+	@RequestMapping(path = "/miclogin", method = RequestMethod.GET)
 	public String copGet() {
-		return "example";
+		return "miclogin";
 	}
 
 	//コピペ用サンプル（画面から何か入力をした時用）
-	@RequestMapping(path = "/example", method = RequestMethod.POST)
-	public String copPost(String example1, String example2, Model model) {
+	@RequestMapping(path = "/miclogin", method = RequestMethod.POST)
+	public String copPost(String micloginid, String micpw, Model model) {
 
-		//DBに繋ぐならこんな感じ(JdbcTemplate)
-		//		List<Map<String, Object>> resultList = jdbcTemplate.queryForList("SELECT * FROM honyarara WHERE honyarara");
+	
+		String query = "SELECT * FROM miclogin WHERE loginid = ? AND password = ?";
+	        
+	        List<Map<String, Object>> res = jdbcTemplate.queryForList(query, micloginid, micpw);
+		
+	       if (!res.isEmpty()) {
+            //ログイン成功
+            return "redirect:/micuser";
+            
+        } else {
+            // ログイン失敗
+           model.addAttribute("loginFailedMessage", res);
+           
 
-		model.addAttribute("example1", example1);
-		model.addAttribute("example2", example2);
-
-		return "example";
+		
+		return "miclogin";
+        }
+	
 	}
 }
