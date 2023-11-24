@@ -1,3 +1,4 @@
+<!-- micuser.html -->
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -7,8 +8,8 @@
 <body>
 
 <form action="/micuser" method="post">
-    <label for="userId">ユーザID:</label>
-    <input type="text" id="userId" name="userId" maxlength="10" required>
+    <label for="loginid">ユーザID:</label>
+    <input type="text" id="loginid" name="loginid" maxlength="10" required>
     <br>
     <label for="password">パスワード:</label>
     <input type="password" id="password" name="password" maxlength="10" required>
@@ -16,7 +17,11 @@
     <input type="submit" value="登録">
 </form>
 
+<!-- エラーメッセージの表示 -->
+<p style="color: red;">${error}</p>
 
+<!-- 登録結果の表示 -->
+<p style="color: green;">${micuser}</p>
 
 </body>
 </html>

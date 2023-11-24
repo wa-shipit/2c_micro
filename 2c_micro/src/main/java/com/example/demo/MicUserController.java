@@ -1,36 +1,49 @@
 package com.example.demo;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-@RequestMapping("/micuser")
 public class MicUserController {
 
-    @GetMapping
-    public String showForm() {
-        return "micuser"; // HTMLファイル名（micuser.html）と対応
+    private final JdbcTemplate jdbcTemplate;
+
+    @Autowired
+    public MicUserController(JdbcTemplate jdbcTemplate) {
+        this.jdbcTemplate = jdbcTemplate;
     }
 
-    @PostMapping
-    public ModelAndView processForm(@RequestParam String userId, @RequestParam String password) {
-        ModelAndView modelAndView = new ModelAndView();
+    @RequestMapping(path = "/micuser", method = RequestMethod.GET)
+    public String showForm() {
+        return "micuser";
+    }
+
+    @RequestMapping(path = "/micuser", method = RequestMethod.POST)
+    public String processForm(String loginid, String password, Model model) {
 
         // 文字数制限のチェック
-        if (userId.length() > 10 || password.length() > 10) {
-            modelAndView.addObject("error", "IDとパスワードはそれぞれ10文字以内で入力してください。");
-            modelAndView.setViewName("micuser"); // 入力エラーがある場合は再びフォームを表示
+        if (loginid.length() > 10 || password.length() > 10) {
+            model.addAttribute("error", "エラー：IDとパスワードはそれぞれ10文字以内で入力してください。");
+            model.addAttribute("micuser", ""); // エラー時は空文字でクリア
         } else {
-            // micloginテーブルに登録する処理（データベースへの保存など）
-            // ここでは省略
-            modelAndView.addObject("success", "ユーザ登録が完了しました。");
-            modelAndView.setViewName("success"); // 登録成功時の画面を表示
+            try {
+                // micloginテーブルに登録する処理
+            	jdbcTemplate.update("INSERT INTO miclogin (loginid,password) VALUES(?,?);", loginid, password);
+
+                // 登録成功時に登録情報を表示
+                model.addAttribute("micuser", "ユーザID: " + loginid + " が登録されました。");
+            } catch (Exception e) {
+                // 登録失敗時のエラーメッセージ
+                model.addAttribute("error", "エラー：ユーザの登録に失敗しました。");
+                model.addAttribute("micuser", ""); // エラー時は空文字でクリア
+                e.printStackTrace(); // エラー内容をコンソールに出力（本番環境では適切なログ設定を行うべき）
+            }
         }
 
-        return modelAndView;
+        return "micuser";
     }
 }
