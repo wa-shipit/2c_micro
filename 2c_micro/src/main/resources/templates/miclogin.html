@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <script th:inline="javascript">
+		function func1(){
+          var alert1 = /*[[${mozierror}]]*/
+           alert(alert1);
+        }
+        function func2(){
+           var alert2 = /*[[${loginerror}]]*/
+           alert(alert2);
+        }
+	</script>
+</head>
+<body>
+    <h2>Login</h2>
+    <form action="/miclogin" method="post">
+        <div>
+            <label for="id">ID:</label>
+            <input type="text" name="micloginid">
+        </div>
+        <div>
+            <label for="password">Password:</label>
+            <input type="password" name="micpw">
+        </div>
+        <div>
+            <button type="submit">Login</button>
+        </div>
+    </form>
+    <p th:text="${mozierror}"></p>
+    <p th:text="${loginerror}"></p>
+    <p th:if="${error}" style="color: red" th:text="${error}"></p>
+</body>
+</html>
