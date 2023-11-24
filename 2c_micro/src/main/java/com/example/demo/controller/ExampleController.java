@@ -12,7 +12,7 @@ public class ExampleController {
 
 	@Autowired
 	JdbcTemplate jdbcTemplate;
-
+//	a
 	//コピペ用サンプル(ページ表示用メソッド)
 	@RequestMapping(path = "/example", method = RequestMethod.GET)
 	public String copGet() {
