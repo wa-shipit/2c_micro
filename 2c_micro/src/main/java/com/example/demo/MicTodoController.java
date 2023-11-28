@@ -18,16 +18,13 @@ public class MicTodoController {
 	}
 
 	@RequestMapping(path = "/micadd", method = RequestMethod.POST)
-	public String copPost( String month,String day,String todo,Model model) {
+	public String copPost(String month, String day, String todo, Model model) {
+	    jdbcTemplate.update("INSERT INTO todo (user_id, month, day, todo) VALUES (999999,?, ?, ?)", month, day, todo);
 
-		String sql = "INSERT INTO todo (month, day, todo) VALUES (?, ?, ?)";
-		jdbcTemplate.update(sql, month, day, todo);
+	    
 
-		model.addAttribute("month", month);
-		model.addAttribute("day", day);
-		model.addAttribute("todo", todo);
-
-		return "mictodocadd";
+	    
+	    return "redirect:/micadd"; 
 	}
 		
 		//削除ページ表示用メソッド
@@ -38,14 +35,29 @@ public class MicTodoController {
 
 		//コピペ用サンプル（画面から何か入力をした時用）
 		@RequestMapping(path = "/micdel", method = RequestMethod.POST)
-		public String cPost(String example1, String example2, Model model) {
+		public String cPost(String month, String day) {
+		    // DBに繋ぐならこんな感じ(JdbcTemplate)
+		    jdbcTemplate.update("DELETE FROM todo WHERE month = ? AND day = ?", month, day);
 
-			//DBに繋ぐならこんな感じ(JdbcTemplate)
-			//		List<Map<String, Object>> resultList = jdbcTemplate.queryForList("SELECT * FROM honyarara WHERE honyarara");
-
-			model.addAttribute("example1", example1);
-			model.addAttribute("example2", example2);
-
-			return "mictododel";
+		    return "redirect:/micdel";
 		}
-}
+		
+		//編集ページ表示用メソッド
+				@RequestMapping(path = "/micedit", method = RequestMethod.GET)
+				public String cGe() {
+					return "mictodoedit";
+				}
+
+				//コピペ用サンプル（画面から何か入力をした時用）
+				@RequestMapping(path = "/micedit", method = RequestMethod.POST)
+				public String cPo(String month, String day, String todo) {
+				    // DBに繋ぐならこんな感じ(JdbcTemplate)
+				    jdbcTemplate.update("UPDATE todo SET todo = ? WHERE month = ? AND day = ?", todo, month, day);
+
+				    return "redirect:/micedit";
+				}
+				
+		}
+		
+
+

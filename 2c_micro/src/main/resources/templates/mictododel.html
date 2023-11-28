@@ -5,12 +5,12 @@
 </head>
 <body>
     <h1>削除画面</h1>
-    <form action="/submit" method="post">
+    <form th:action="@{/micdel}" method="post">
 		<p>削除する日</p>
         <label for="month">月:</label><br>
-        <input type="number" id="month" name="month" min="1" max="12"><br>
+        <input type="text" id="month" name="month" pattern="[0-1]{0,1}[0-9]" title="1から12までの数値を入力してください"><br>
         <label for="day">日:</label><br>
-        <input type="number" id="day" name="day" min="1" max="31"><br>
+        <input type="text" id="day" name="day" pattern="[0-3]{0,10-9]" title="1から31までの数値を入力してください"><br>
         <input type="submit" value="削除">
     </form>
     <button class="michome" onclick="location.href='michome'">戻る</button>
