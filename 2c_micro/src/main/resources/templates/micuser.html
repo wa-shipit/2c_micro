@@ -20,10 +20,10 @@
 <form th:action="@{/micuser/register}" method="POST">
     <div class="form-group">
         <label for="loginId">ユーザーID</label>
-        <input type="text" name="loginId" required th:maxlength="16"><br>
+        <input type="text" name="loginId" required th:maxlength="10"><br>
 
         <label for="password">パスワード</label>
-        <input type="password" name="password" required th:maxlength="16"><br>
+        <input type="password" name="password" required th:maxlength="10"><br>
 
         <button type="submit" class="btn btn-primary">登録</button>
     </div>
