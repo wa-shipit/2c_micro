@@ -14,9 +14,9 @@
 
 <body>
 	<div class="row">
-		<div class="col-4">左ブロック</div>
+		<div class="col-4"></div>
 		<div class="col-4">
-			<h1 style="font-family: 'DotGothic16', sans-serif;">サンプル用ページだよ</h1>
+			<h1 style="font-family: 'DotGothic16', sans-serif;">ログインページだよ</h1>
 			<h1 style="font-family: 'DotGothic16', sans-serif;">google font使ってるよ</h1>
 
 			<!--ここ大事！！！---->
@@ -27,18 +27,16 @@
 
 					<label for="example2">入力欄2</label>
 					<input type="text" name="micpw" maxlength="16"><br>
-
+					<p style="font-family: 'DotGothic16', sans-serif;"th:text="${loginFailedMessage}"></p>
 					<button type="submit" class="btn btn-primary ">送信</button>
-					<div id="message"></div>
-					</div>
+				
 			</form>
 			<!---->
 		</div>
 		<div class="col-4">
-			右ブロック<br>
-			入力欄1の入力内容<p th:text="${micloginid}"></p>
-			入力欄2の入力内容<p th:text="${micpw}"></p>
-			入力欄3の入力内容<p th:text="${loginFailedMessage}"></p>
+			
+
+			
 		</div>
 	</div>
 	

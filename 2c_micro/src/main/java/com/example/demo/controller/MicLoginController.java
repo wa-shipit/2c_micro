@@ -33,11 +33,11 @@ public class MicLoginController {
 		
 	       if (!res.isEmpty()) {
             //ログイン成功
-            return "redirect:/micuser";
+            return "redirect:/michome";
             
         } else {
             // ログイン失敗
-           model.addAttribute("loginFailedMessage", "ログイン失敗");
+           model.addAttribute("loginFailedMessage", "ログイン失敗～～～残念！！！");
            
 
 		
