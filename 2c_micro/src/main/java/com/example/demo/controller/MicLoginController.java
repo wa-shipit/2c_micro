@@ -37,7 +37,7 @@ public class MicLoginController {
             
         } else {
             // ログイン失敗
-           model.addAttribute("loginFailedMessage", res);
+           model.addAttribute("loginFailedMessage", "ログイン失敗");
            
 
 		
