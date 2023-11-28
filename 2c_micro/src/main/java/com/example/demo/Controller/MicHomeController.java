@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.example.demo.Controller;
 
 import java.util.List;
 import java.util.Map;
