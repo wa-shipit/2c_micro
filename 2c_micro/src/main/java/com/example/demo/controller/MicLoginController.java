@@ -31,6 +31,10 @@ public class MicLoginController {
 	        
 	        List<Map<String, Object>> res = jdbcTemplate.queryForList(query, micloginid, micpw);
 		
+	        if (micloginid.length() >= 16 || micpw.length() >= 16) {
+	            model.addAttribute("loginFailedMessage2", "IDまたはパスワードが長すぎます");
+	            return "miclogin";
+	        }
 	       if (!res.isEmpty()) {
             //ログイン成功
             return "redirect:/michome";
