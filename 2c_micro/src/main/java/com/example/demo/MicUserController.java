@@ -1,8 +1,5 @@
 package com.example.demo;
 
-import java.util.List;
-import java.util.Map;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
@@ -23,15 +20,13 @@ public class MicUserController {
     }
 
     // 画面からの入力処理用メソッド
-    @RequestMapping(path = "/micuser", method = RequestMethod.POST)
-    public String copPost(String loginId, String password, Model model) {
+    @RequestMapping(path = "/micuser/register", method = RequestMethod.POST)
+    public String registerUser(String loginId, String password, Model model) {
+        String sql = "INSERT INTO miclogin (loginid, password) VALUES (?, ?)";
+        
+        jdbcTemplate.update(sql, loginId, password);
 
-        List<Map<String, Object>> resultList = jdbcTemplate.queryForList("SELECT * FROM miclogin WHERE login_id = ? AND password = ?", loginId, password);
-
-        model.addAttribute("loginId", loginId);
-        model.addAttribute("password", password);
-        model.addAttribute("resultList", resultList);
-
-        return "micuser";
+        // 登録が完了したら、micuser.html ページにリダイレクト
+        return "redirect:/micuser";
     }
 }

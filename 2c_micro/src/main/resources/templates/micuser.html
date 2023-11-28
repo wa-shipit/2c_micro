@@ -14,21 +14,20 @@
 </head>
 <body>
 
-    <h2>ユーザー登録</h2>
+      <h2>ユーザー登録</h2>
 
+ 
+<form th:action="@{/micuser/register}" method="POST">
+    <div class="form-group">
+        <label for="loginId">ユーザーID</label>
+        <input type="text" name="loginId" required th:maxlength="16"><br>
 
-			<form th:action="@{/micuser}" method="POST">
-				<div class="form-group">
-					<label for="loginId">ユーザーID</label>
-					<input type="text" name="loginId"><br>
+        <label for="password">パスワード</label>
+        <input type="password" name="password" required th:maxlength="16"><br>
 
-					<label for="password">パスワード</label>
-					<input type="text" name="password"><br>
-
-					<button type="submit" class="btn btn-primary">登録</button>
-					</div>
-			</form>
-		
+        <button type="submit" class="btn btn-primary">登録</button>
+    </div>
+    </form>
 
 </body>
 </html>
