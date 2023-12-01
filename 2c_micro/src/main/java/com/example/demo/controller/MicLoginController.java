@@ -28,13 +28,13 @@ public class MicLoginController {
 
 	
 		String query = "SELECT * FROM miclogin WHERE loginid = ? AND password = ?";
-	        
-	        List<Map<String, Object>> res = jdbcTemplate.queryForList(query, micloginid, micpw);
-		
-	        if (micloginid.length() >= 16 || micpw.length() >= 16) {
+		   if (micloginid.length() >= 16 || micpw.length() >= 16) {
 	            model.addAttribute("loginFailedMessage2", "IDまたはパスワードが長すぎます");
 	            return "miclogin";
 	        }
+		
+	        List<Map<String, Object>> res = jdbcTemplate.queryForList(query, micloginid, micpw);
+		
 	       if (!res.isEmpty()) {
             //ログイン成功
             return "redirect:/michome";
