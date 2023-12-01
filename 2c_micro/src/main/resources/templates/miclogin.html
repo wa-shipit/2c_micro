@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>ログイン</title>
+    <script src="/js/miclogin.js"></script>
+</head>
+<body>
+    <div class="login-container">
+        <h2>ログイン</h2>
+        <form action="/miclogin" method="post">
+            <label for="micloginid">ID:</label>
+            <input type="text" name="micloginid"><br>
+            <label for="micpw">パスワード:</label>
+            <input type="password" name="micpw"><br>
+            <button type="submit">ログインする</button>
+        </form>
+        <p th:if="${loginError}" th:text="${loginError}"></p>
+        <p th:if="${mojiseigen}" th:text="${mojiseigen}"></p>
+		
+    </div>
+</body>
+</html>
