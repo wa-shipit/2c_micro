@@ -36,16 +36,16 @@ public class MicTodoController {
 		return "micdel";
 	}
 	
-	@RequestMapping(path = "/micadd", method = RequestMethod.POST)
-	public String copPost(String id, String month, String day, String todo,Model model) {
-	
-		//DBに繋ぐならこんな感じ(JdbcTemplate)
-			jdbcTemplate.update("INSERT INTO todo values(?,?,?)",month,day,todo);
-
-		
-
-		return "mictodo";
-	}
+		@RequestMapping(path = "/micadd", method = RequestMethod.POST)
+		public String copPost(String month, String day, String todo,Model model) {
+	 String user_id = "1";
+	 //DBに繋ぐならこんな感じ(JdbcTemplate)
+	 jdbcTemplate.update("INSERT INTO todo values(?,?,?,?)",user_id,month,day,todo);
+	 model.addAttribute("month", month);
+	 model.addAttribute("day", day);
+	 model.addAttribute("todo", todo);
+	 return "micadd";
+		}
 	@RequestMapping(path = "/micedit", method = RequestMethod.POST)
 	public String cop(String month, String day, String todo,Model model) {
 
@@ -64,16 +64,11 @@ public class MicTodoController {
 		
 		return "micedit";
 	}
-	@RequestMapping(path = "/micdel", method = RequestMethod.POST)
-	public String c(String month, String day, String todo,Model model) {
-
+			@RequestMapping(path = "/micdel", method = RequestMethod.POST)
+			public String c(String month, String day, String todo,Model model) {
 		//DBに繋ぐならこんな感じ(JdbcTemplate)
-			jdbcTemplate.update("INSERT INTO todo values(?,?,?)",month,day,todo);
-
-		model.addAttribute("month", month);
-		model.addAttribute("day", day);
-		model.addAttribute("todo", todo);
-
+		jdbcTemplate.update("DELETE FROM todo WHERE month=? AND day=? AND todo=?",month,day,todo);
+		
 		return "micdel";
-	}
+		}
 }
