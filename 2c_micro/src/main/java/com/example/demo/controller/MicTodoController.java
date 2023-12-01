@@ -13,12 +13,12 @@ public class MicTodoController {
 	JdbcTemplate jdbcTemplate;
 
 	//コピペ用サンプル(ページ表示用メソッド)
-	@RequestMapping(path = "/miceadd", method = RequestMethod.GET)
+	@RequestMapping(path = "/micadd", method = RequestMethod.GET)
 	public String insG() {
 		return "mictodo";
 	}
 	
-	@RequestMapping(path = "/miceadd", method = RequestMethod.POST)
+	@RequestMapping(path = "/micadd", method = RequestMethod.POST)
 	public String insP(String user_id,String month, String day,String todo, Model model) {
 
 		//DBに繋ぐならこんな感じ(JdbcTemplate)
