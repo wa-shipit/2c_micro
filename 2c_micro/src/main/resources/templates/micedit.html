@@ -20,20 +20,7 @@
 			<h1 style="font-family: 'DotGothic16', sans-serif;">google font使ってるよ</h1>
 
 			<!--ここ大事！！！-->
-			<form th:action="@{/micedit}" method="POST">
-				<div class="form-group">
-					<label for="month">月</label>
-					<input type="text" name="month"><br>
-
-					<label for="day">日</label>
-					<input type="text" name="day"><br>
-					
-					<label for="todo">予定</label>
-					<input type="text" name="todo"><br>
-
-					<button type="submit" class="btn btn-primary">送信</button>
-					</div>
-			</form>
+		
 			<form th:action="@{/micedit}" method="POST">
 				<div class="form-group">
 					<label for="example1">月</label>
@@ -46,6 +33,7 @@
 					<input type="text" name="todo"><br>
 
 					<button type="submit" class="btn btn-primary">送信</button>
+					<p style="font-family: 'DotGothic16', sans-serif;"th:text="${loginFailedMessage}"></p>
 					</div>
 			</form>
 		</div>

@@ -50,12 +50,18 @@ public class MicTodoController {
 	public String cop(String month, String day, String todo,Model model) {
 
 		//DBに繋ぐならこんな感じ(JdbcTemplate)
-			jdbcTemplate.update("INSERT INTO todo values(?,?,?)",month,day,todo);
+	       String updateQuery = "UPDATE todo SET todo = ? WHERE month = ? AND day = ?";
+	       int updatedRows =  jdbcTemplate.update(updateQuery, todo, month, day);
 
-		model.addAttribute("month", month);
-		model.addAttribute("day", day);
-		model.addAttribute("todo", todo);
-
+	        if (updatedRows > 0) {
+	            // 更新成功
+	        	model.addAttribute("loginFailedMessage", "変更完了！！！");
+	        } else {
+	            // 更新失敗
+	        	model.addAttribute("loginFailedMessage", "変更失敗！！！");
+	        }
+		
+		
 		return "micedit";
 	}
 	@RequestMapping(path = "/micdel", method = RequestMethod.POST)
