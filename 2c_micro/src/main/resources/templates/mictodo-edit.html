@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>MicTodo 編集画面</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container mt-4">
+    <h2>MicTodo 編集画面</h2>
+    <!-- フォーム -->
+    <form action="/micedit" method="POST">
+        <div class="form-group">
+            <label for="month">月:</label>
+            <input type="text" class="form-control" id="month" name="month" required>
+        </div>
+        <div class="form-group">
+            <label for="day">日:</label>
+            <input type="text" class="form-control" id="day" name="day" required>
+        </div>
+        <div class="form-group">
+            <label for="schedule">予定:</label>
+            <input type="text" class="form-control" id="schedule" name="schedule" required>
+        </div>
+        <button type="submit" class="btn btn-primary">編集</button>
+    </form>
+</div>
+<!-- Bootstrap JS and dependencies (jQuery, Popper.js) -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>
