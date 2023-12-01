@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>登録</title>
+</head>
+<body>
+	<h2>ユーザー情報を登録する！</h2>
+	<form th:action="@{/micadd}" method="POST">
+
+		ユーザーID：<input type="text" name="user_id"> <br>
+		月：<input type="text" name="month"> <br>
+		日：<input type="text" name="day"> <br>
+		予定：<input type="text" name="todo"> <br>
+		<input type="submit" value="登録する">
+	</form>
+</body>
+</html>
