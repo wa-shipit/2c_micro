@@ -13,11 +13,6 @@ public class MicTodoController {
 	@Autowired
 	JdbcTemplate jdbcTemplate;
 	
-	@RequestMapping(path = "/mictodo", method = RequestMethod.GET)
-	public String copGet() {
-		
-		return "mictodo";
-	}
 	@RequestMapping(path = "/micadd", method = RequestMethod.GET)
 	public String copGet1() {
 		
@@ -38,21 +33,21 @@ public class MicTodoController {
 	
 	@RequestMapping(path = "/micadd", method = RequestMethod.POST)
 	public String copPost(String month, String day, String todo,Model model) {
-		String user_id ="1111";
+		String user_id = "1";
 		//DBに繋ぐならこんな感じ(JdbcTemplate)
-			jdbcTemplate.update("INSERT INTO todo valuse(?,?,?,?)",user_id,month,day,todo);
+		jdbcTemplate.update("INSERT INTO todo values(?,?,?,?)",user_id,month,day,todo);
 
 		model.addAttribute("month", month);
 		model.addAttribute("day", day);
 		model.addAttribute("todo", todo);
 
-		return "micadd";
+		return "mictodo";
 	}
 	@RequestMapping(path = "/micedit", method = RequestMethod.POST)
 	public String cop(String month, String day, String todo,Model model) {
 
 		//DBに繋ぐならこんな感じ(JdbcTemplate)
-			jdbcTemplate.update("INSERT INTO todo valuse(?,?,?)",month,day,todo);
+		jdbcTemplate.update("",month,day,todo);
 
 		model.addAttribute("month", month);
 		model.addAttribute("day", day);
@@ -64,12 +59,12 @@ public class MicTodoController {
 	public String c(String month, String day, String todo,Model model) {
 
 		//DBに繋ぐならこんな感じ(JdbcTemplate)
-			jdbcTemplate.update("INSERT INTO todo valuse(?,?,?)",month,day,todo);
+		jdbcTemplate.update("INSERT INTO todo values(?,?,?)",month,day,todo);
 
 		model.addAttribute("month", month);
 		model.addAttribute("day", day);
 		model.addAttribute("todo", todo);
 
-		return "todo";
+		return "micdel";
 	}
 }
