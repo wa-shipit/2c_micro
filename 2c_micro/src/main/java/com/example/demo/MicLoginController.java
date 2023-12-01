@@ -33,11 +33,11 @@ public class MicLoginController {
 
         // データベースと照合（サンプルとしてqueryForListの使用）
         List<Map<String, Object>> resultList = jdbcTemplate.queryForList(
-                "SELECT * FROM users WHERE username = ? AND password = ?", micloginid, micpw);
+                "SELECT * FROM miclogin WHERE loginid = ? AND password = ?", micloginid, micpw);
 
         if (!resultList.isEmpty()) {
             // ログイン成功//
-            return "michome";
+            return "redirect:/michome";
         } else {
             // ログイン失敗
             model.addAttribute("message", "ログインに失敗しました");

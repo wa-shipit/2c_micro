@@ -20,7 +20,7 @@ public class MicHomeController {
     @RequestMapping(path = "/michome", method = RequestMethod.GET)
     public String copGet(String example1, String example2, Model model) {
     	  // DBに繋ぐならこんな感じ(JdbcTemplate)
-    	List<Map<String, Object>> resultList = jdbcTemplate.queryForList("SELECT month, day, todo FROM todo");
+    	List<Map<String, Object>> resultList = jdbcTemplate.queryForList("SELECT * FROM todo");
 System.out.println(resultList);
         model.addAttribute("example1", example1);
         model.addAttribute("example2", example2);
