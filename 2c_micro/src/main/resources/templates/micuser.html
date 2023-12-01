@@ -22,10 +22,10 @@ RegistrationApplication</h1>
 			<form th:action="@{/micuser}" method="POST">
 				<div class="form-group">
 					<label>ID</label>
-					<input type="text" name="micuser1"><br>
+					<input type="text" name="micuser1" maxlength="10"><br>
 
 					<label>password</label>
-					<input type="text" name="micuser2"><br>
+					<input type="text" name="micuser2" maxlength="10"><br>
 
 					<button type="submit" class="btn btn-primary">登録</button>
 					</div>
