@@ -26,18 +26,7 @@ public class MicHomeController {
 		return "michome";
 	}
 
-	@RequestMapping(path = "/micadd", method = RequestMethod.GET)
-	public String copGet1() {
-		return "micadd";
-	}
-	@RequestMapping(path = "/micedit", method = RequestMethod.GET)
-	public String copGet2() {
-		return "micedit";
-	}
-	@RequestMapping(path = "/micdel", method = RequestMethod.GET)
-	public String copGet3() {
-		return "micdel";
-	}
+
 	
 	
 	

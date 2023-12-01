@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class MicLoginController {
     @Autowired
     JdbcTemplate jdbcTemplate;
-
     // コピペ用サンプル(ページ表示用メソッド)
     @RequestMapping(path = "/miclogin", method = RequestMethod.GET)
     public String micGet() {
