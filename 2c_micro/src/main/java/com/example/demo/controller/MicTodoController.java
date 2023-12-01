@@ -44,7 +44,7 @@ public class MicTodoController {
 
 		
 
-		return "micadd";
+		return "mictodo";
 	}
 	@RequestMapping(path = "/micedit", method = RequestMethod.POST)
 	public String cop(String month, String day, String todo,Model model) {
@@ -74,6 +74,6 @@ public class MicTodoController {
 		model.addAttribute("day", day);
 		model.addAttribute("todo", todo);
 
-		return "todo";
+		return "micdel";
 	}
 }
