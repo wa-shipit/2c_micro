@@ -24,7 +24,7 @@ public class MicUserController {
 	public String copPost(String loginid, String password, Model model) {
 
 //		DBに繋ぐならこんな感じ(JdbcTemplate)
-				jdbcTemplate.update("INSERT INTO miclogin (loginid, password) VALUES (?, ?)", loginid, password);
+				jdbcTemplate.update("INSERT INTO miclogin (loginid, password) VALUES (?,?)", loginid, password);
 
 		model.addAttribute("example1", loginid);
 		model.addAttribute("example2", password);

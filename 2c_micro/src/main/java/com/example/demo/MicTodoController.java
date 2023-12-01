@@ -56,5 +56,8 @@ public class MicTodoController {
         jdbcTemplate.update("DELETE FROM todo WHERE user_id=? AND month=? AND day=?;",00000, deleteMonth, deleteDay);
 
         return "redirect:/micdel";
+        
+        
+        
     }
 }

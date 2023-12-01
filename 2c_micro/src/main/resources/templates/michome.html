@@ -11,44 +11,38 @@
 		href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@700&family=Dela+Gothic+One&family=DotGothic16&family=Mochiy+Pop+One&family=Mochiy+Pop+P+One&family=Noto+Sans+JP:wght@800&family=Zen+Maru+Gothic:wght@300;700&display=swap"
 		rel="stylesheet">
 	<style>
+
 		h1{
 			text-align: center;
 		}
-		.grid {
-  display: flex;
-  height: 100%;
-  position: absolute;
-  width: 100%;
-}
-.grid span {
-  border-right: 1px solid #333;
-  height: 100%;
-  width:67%;
+.grid{
+  border-left: 1px solid #333;
+  height: 1300px;
+
 }
 	</style>
 </head>
 
 <body>
-	<div class="grid">
-		<span></span>
-		</div>
+
 	<div class="row">
+		
 		<div class="col-8">
 			<h1 style="font-family: 'DotGothic16', sans-serif;">[TODOLIST]</h1>
 			<h1 style="font-family: 'DotGothic16', sans-serif;"></h1>
 			
 			<tr th:each="list:${list}">
 			<h1 th:text="${list.month} + '月'+ ${list.day} + '日'"></h1>
-			
-			
 			<h1 th:text="${list.todo}"></h1>
 			</tr>
 		</div>
-		<div class="col-4">
-			<h2><a href=".micadd/">新規登録</h2><br>
-			<h2><a href="./micedit">編集</h2><br>
-			<h2><a href="./micdel"> 削除</h2><br>
+		
+		<div class="col-4 grid" >
+			<h2><a href="./micadd">新規登録</a></h2><br>
+			<h2><a href="./micedit">編集</a></h2><br>
+			<h2><a href="./micdel"> 削除</a></h2><br>
 		</div>
+		
 	</div>
 </body>
 
