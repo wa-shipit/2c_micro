@@ -17,7 +17,9 @@
         </form>
         <p th:if="${loginError}" th:text="${loginError}"></p>
         <p th:if="${mojiseigen}" th:text="${mojiseigen}"></p>
-		
     </div>
+            <form action="/micuser" method="get">
+            <button type="submit">新規会員登録</button>
+        </form>
 </body>
 </html>

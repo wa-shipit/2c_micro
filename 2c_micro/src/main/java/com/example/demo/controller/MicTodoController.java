@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.example.demo.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
@@ -24,7 +24,7 @@ public class MicTodoController {
 	jdbcTemplate.update("insert into todo (user_id,month,day,todo) values (999999,?,?,?)",month,day,todo);
 
 
-		return "mictodoadd";
+		return "redirect:/michome";
 	}
 
 	
@@ -41,7 +41,7 @@ public class MicTodoController {
 	jdbcTemplate.update("update todo set todo = ? where month = ? and day = ?",todo,month,day);
 
 
-		return "mictodoedit";
+		return "redirect:/michome";
 	}
 	
 
@@ -59,6 +59,6 @@ public class MicTodoController {
 	jdbcTemplate.update("delete from todo where month = ? and day = ?",month,day);
 
 
-		return "mictododel";
+		return "redirect:/michome";
 	}
 }

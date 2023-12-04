@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.example.demo.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
@@ -18,6 +18,6 @@ public class MicUserController {
 	@RequestMapping(path = "/micuser", method = RequestMethod.POST)
 	public String viewPage(String loginid, String password) {
 		jdbcTemplate.update("INSERT INTO miclogin VALUES (?,?);", loginid, password);
-			return "redirect:/micuser";
+			return "redirect:/miclogin";
 		}
 				} 

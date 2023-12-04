@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.example.demo.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -29,7 +29,7 @@ public class MicLoginController {
 		
 		int x = micloginid.length();
 		int y = micpw.length();
-		if(x>= 16 || y >=16) {
+		if(x >= 16 || y >=16) {
 			//多いならログイン画面に戻す。
 			String mojiseigen = "文字数が多すぎます";
 			model.addAttribute("mojiseigen", mojiseigen);
